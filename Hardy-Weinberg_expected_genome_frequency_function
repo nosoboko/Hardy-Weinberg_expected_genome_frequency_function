@@ -1,0 +1,28 @@
+```{r}
+calc_expected_geno_freq <- function(p){ 
+
+# Function calculates the expected genome frequencies 
+# according the the Hardy-Weinberg expectations. 
+# The function take a single argument p:
+# p = the observed frequency of the A1A1 allele.
+  
+# first set the frequency of q from the input argument p
+q <- 1 - p 
+
+# calculate the expected genotype frequencies (_e denotes expected)
+A1A1_e <- p^2
+A1A2_e <- 2 * (p * q)
+A2A2_e <- q^2
+
+#result is a vector of the expected HWE frequencies of each genotype
+expected_genotype_freq <- c(A1A1_e, A1A2_e, A2A2_e)
+
+#The HWE expected frequencies of the genotypes A1A1, A1A2 and A2A2 are:
+return (expected_genotype_freq)
+}
+```
+```{r}
+#test function eg:
+calc_expected_geno_freq (0.2)
+#should give output "> [1] 0.04 0.32 0.64"
+```
